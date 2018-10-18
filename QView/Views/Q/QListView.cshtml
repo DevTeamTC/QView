@@ -1,0 +1,48 @@
+﻿@model QView.ViewModels.QListViewModel
+@{
+    ViewBag.Title = "QListView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3 class="alert-warning">Plates 'Last Scheduled' before July 1st, @DateTime.Now.AddYears(-2).Year.ToString() have been tossed.</h3>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>QNumber</th>
+            <th>Created</th>
+            <th>Last Scheduled</th>
+            <th>Previous Scheduled</th>
+            <th>Type</th>
+            <th>Company</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var q in Model.QRecords)
+        {
+        <tr class="table table">
+
+            @if (q.FilePath != null)
+            {
+                <td><a href=@q.FilePath target="_blank">@String.Concat("Q", q.Id.ToString())</a></td>
+                
+            }
+            else
+            {
+                <td>@q.Id.ToString()</td>
+            }
+
+            <td>@q.Created</td>
+            <td>@q.LastScheduled</td>
+            <td>@q.PreviousScheduled</td>
+            <td>@q.Type</td>
+            <td>@q.Company</td>
+            <td>@q.Description</td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+

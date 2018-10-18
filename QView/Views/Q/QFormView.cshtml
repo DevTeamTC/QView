@@ -1,0 +1,33 @@
+﻿@model QView.Models.QRecord
+@{
+    ViewBag.Title = "QView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+    <h3>Find By Any Fields:</h3>
+
+    @using (Html.BeginForm("Find", "Q"))
+    {
+        <div class="form-group">
+            @Html.LabelFor(q => q.Id)
+            @Html.TextBoxFor(q => q.Id, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(q => q.Company)
+            @Html.TextBoxFor(q => q.Company, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(q => q.Description)
+            @Html.TextBoxFor(q => q.Description, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(q => q.Type)
+            @Html.TextBoxFor(q => q.Type, new { @class = "form-control" })
+        </div>
+        <button type="reset" class="btn btn-secondary">Clear</button>
+        <button type="submit" class="btn btn-primary">Find</button>
+
+    }
+
+
